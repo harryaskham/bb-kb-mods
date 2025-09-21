@@ -1,0 +1,3 @@
+[submodule "keyboards/BB9900-USB_BLE_Keyboard"]
+	path = keyboards/BB9900-USB_BLE_Keyboard
+	url = git@github.com:harryaskham/BB9900-USB_BLE_Keyboard.git

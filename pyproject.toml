@@ -1,0 +1,22 @@
+[project]
+name = "bb-kb-mods"
+version = "0.0.1"
+authors = [
+  { name="Harry Askham", email="harryaskham@gmail.com" },
+]
+description = "Programmatic edits to zitaotech BB keyboard models"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+[project.scripts]
+bbkm = "bbkm.main:main"
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = "."
+module-name = ["bbkm"]
