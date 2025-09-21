@@ -1,0 +1,11 @@
+./keyboards/BB9900-USB_BLE_Keyboard/3D-model/9900_bottom_case.stl contains a 3d model of the bottom case of a detached Blackberry 9900 keyboard. Create a new version of this model edited to meet the following criteria:
+
+- The gap where a battery cover would go is removed, so that the back plate is completely flat and continuous.
+- There is a circular recess in place for inserting a metal magsafe ring to make the case attracted to magnets. An example of the circular recess on a similar device with a larger backplace can be found at ./keyboards/extra/magsafe-example.stl. We only need the circular recess here, not the linear short segment underneath the circle that helps to locate the magnetic connection. The dimensions and depth of the ring are correct here, but the other parts of the case are for a much larger device, so only use the ring part for reference.
+- All other geometry remains intact, including the inner battery enclosure, buttons, screwholes and the space for the actual keyboard circuit board.
+- It should be physically possible to insert the ring after a 3D print i.e. the ring recess cannot be fully enclosed in plastic.
+- If you need to make the model deeper to account for the magsafe ring, this is okay, but do so by thickening the backplate only, so that other geometry is fixed.
+
+You should build your edits as a Python library / app `bbkm` which this repository is set up to build (via `uv` and Nix Flakes with `uv2nix`). The end goal should be a program performing a deterministic transformation on the STL file that can be executed like `bbkm --keyboard bb9000 --mods no-battery-cover,magsafe --input=.../9900_bottom_case.stl --output=9900_bottom_case_magsafe.stl`.
+
+You may need to work out a way to inspect the input models and those your code is procuding that you can use to reason about - this may involve a way to create temporary images of the STL files so you can use your image-analysis capabilities to look at the models from different angles programmatically as you work and reason about what you're doing. You will of course also need a way to make structured and programmatic edits to these STL files.

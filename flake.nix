@@ -56,7 +56,6 @@
           mypy
           ruff
         ];
-        setLD = ''export LD_LIBRARY_PATH="${lib.makeLibraryPath deps}:$LD_LIBRARY_PATH"'';
       in rec {
         devShells = {
           default = pkgs.mkShell {
@@ -67,7 +66,7 @@
             };
             propagatedBuildInputs = deps;
             shellHook = ''
-              ${setLD []}
+              export LD_LIBRARY_PATH="${lib.makeLibraryPath deps}:$LD_LIBRARY_PATH"
               unset PYTHONPATH
               export REPO_ROOT=$(git rev-parse --show-toplevel)
             '';
@@ -79,7 +78,7 @@
             inherit (pkgs.callPackages pyproject-nix.build.util { }) mkApplication;
             bbkm = mkApplication {
               inherit venv;
-              package = pythonSet.bbkm;
+              package = pythonSet.bb-kb-mods;
             };
           in {
             inherit bbkm;
